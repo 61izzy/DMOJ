@@ -27,15 +27,17 @@ public class Main {
         System.out.println(vis[m * n] ? "yes" : "no");
     }
     public static void dfs(int x) {
-        if (vis[x]) {
-            return;
-        }
         vis[x] = true;
         if (x == m * n) {
             return;
         }
         for (int v : adj[x]) {
-            dfs(v);
+            if (!vis[v]) {
+                dfs(v);
+            }
+            if (vis[m * n]) {
+                return;
+            }
         }
     }
 }

@@ -4,12 +4,14 @@ import java.util.*;
 public class Main {
     static int n, m;
     static ArrayList<Edge>[] adj;
+    static int[] dist;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
     
         n = scanner.nextInt();
         m = scanner.nextInt();
         adj = new ArrayList[n + 1];
+        dist = new int[n + 1];
     
         for (int i = 1; i <= n; i++) {
             adj[i] = new ArrayList<Edge>();
@@ -21,17 +23,16 @@ public class Main {
             adj[y].add(new Edge(x, w));
         }
         
+        getDist();
         for (int i = 1; i <= n; i++) {
-            int dist = getDist(1, i);
-            System.out.println(dist == Integer.MAX_VALUE ? -1 : dist);
+            System.out.println(dist[i] == Integer.MAX_VALUE ? -1 : dist[i]);
         }
     }
-    public static int getDist(int from, int to) {
-        int[] dist = new int[n + 1];
+    public static void getDist() {
         Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[from] = 0;
+        dist[1] = 0;
         PriorityQueue<Pair> q = new PriorityQueue<Pair>(n,(a,b) -> a.value - b.value);
-        q.offer(new Pair(from, 0));
+        q.offer(new Pair(1, 0));
         while (!q.isEmpty()) {
             int curr = q.poll().key;
             for (Edge v : adj[curr]) {
@@ -41,8 +42,6 @@ public class Main {
                 }
             }
         }
-    
-        return dist[to];
     }
 }
 

@@ -7,19 +7,19 @@ public class Main {
         
         int n = scanner.nextInt();
         long sum = 1, len = 1;
-        String[] names = new String[n];
+        String prev = scanner.next(), curr;
         
-        names[0] = scanner.next().toLowerCase();
         for (int i = 1; i < n; i++) {
-            names[i] = scanner.next().toLowerCase();
-            if (names[i].charAt(0) == names[i - 1].charAt(0)) {
+            curr = scanner.next();
+            if (curr.charAt(0) == prev.charAt(0)) {
                 len++;
-                sum = (sum + len)%1000000007;
+                sum += len;
             }
             else {
                 len = 1;
                 sum++;
             }
+            prev = curr;
         }
         
         System.out.println(sum%1000000007);

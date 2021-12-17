@@ -20,7 +20,7 @@ public class Main {
                     dp[j][1] = Math.max(dp[j][1], q + dp[j - t][1]);
                 }
             }
-            for (int j = 0; j <= c; j++) {
+            for (int j = h; j <= c; j++) {
                 dp[j][0] = Math.max(dp[j][0], dp[j][1]);
             }
         }

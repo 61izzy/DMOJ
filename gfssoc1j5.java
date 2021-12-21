@@ -2,40 +2,44 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+    static ArrayList<Integer>[] adj = new ArrayList[1001];
+    static int n, dist[][] = new int[1001][1001];
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         
-        int n = Integer.parseInt(st.nextToken()), m = Integer.parseInt(st.nextToken()), t = Integer.parseInt(st.nextToken());
-        int[][] adj = new int[n][n];
+        n = scanner.nextInt();
+        int m = scanner.nextInt(), t = scanner.nextInt();
         
-        for (int i = 0; i < n; i++) {
-            Arrays.fill(adj[i], 0x3f3f3f3f);
-            adj[i][i] = 0;
+        for (int i = 1; i <= n; i++) {
+            adj[i] = new ArrayList<Integer>();
         }
         
         for (int i = 0; i < m; i++) {
-            st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken()) - 1, b = Integer.parseInt(st.nextToken()) - 1;
-            adj[a][b] = 1;
+            int a = scanner.nextInt(), b = scanner.nextInt();
+            adj[a].add(b);
         }
         
-        for (int k = 0; k < n; k++) {
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    if (adj[i][j] > adj[i][k] + adj[k][j]) {
-                        adj[i][j] = adj[i][k] + adj[k][j];
-                    }
+        for (int i = 1; i <= n; i++) {
+            bfs(i);
+        }
+        
+        int q = scanner.nextInt();
+        for (int i = 0; i < q; i++) {
+            int a = scanner.nextInt(), b = scanner.nextInt();
+            System.out.println(dist[a][b] == 0 ? "Not enough hallways!" : dist[a][b] * t);
+        }
+    }
+    public static void bfs(int x) {
+        Queue<Integer> q = new LinkedList<Integer>();
+        q.offer(x);
+        while (!q.isEmpty()) {
+            int curr = q.poll();
+            for (int i : adj[curr]) {
+                if (dist[x][i] == 0) {
+                    dist[x][i] = dist[x][curr] + 1;
+                    q.offer(i);
                 }
             }
-        }
-        
-        int q = Integer.parseInt(br.readLine());
-        
-        for (int i = 0; i < q; i++) {
-            st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken()) - 1, b = Integer.parseInt(st.nextToken()) - 1;
-            System.out.println(adj[a][b] == 0x3f3f3f3f ? "Not enough hallways!" : adj[a][b] * t);
         }
     }
 }

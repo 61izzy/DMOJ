@@ -19,24 +19,23 @@ public class Main {
         Arrays.sort(arr);
 
         int q = scanner.nextInt();
-        TreeMap<Query, Pair> queries = new TreeMap<Query, Pair>((Query a, Query b) -> a.m != b.m ? a.m - b.m : b.i - a.i);
+        PriorityQueue<Query> pq = new PriorityQueue<Query>((Query a, Query b) -> a.m != b.m ? b.m - a.m : a.i - b.i);
         HashMap<Integer, Long> res = new HashMap<Integer, Long>();
 
         for (int i = 0; i < q; i++) {
             int a = scanner.nextInt(), b = scanner.nextInt() + 1, m = scanner.nextInt();
-            queries.put(new Query(i, m), new Pair(a, b));
+            pq.offer(new Query(i, a, b, m));
         }
 
         int i = n - 1;
-        while (!queries.isEmpty()) {
-            Query curr = queries.lastKey();
-            Pair p = queries.pollLastEntry().getValue();
+        while (!pq.isEmpty()) {
+            Query curr = pq.poll();
             
             for (; i >= 0 && arr[i] >= curr.m; i--) {
                 update(idx.get(arr[i]).poll(), arr[i]);
             }
 
-            res.put(curr.i, query(p.b) - query(p.a));
+            res.put(curr.i, query(curr.b) - query(curr.a));
         }
 
         for (int k = 0; k < q; k++) {
@@ -57,18 +56,12 @@ public class Main {
     }
 }
 
-class Pair {
-    int a, b;
-    public Pair(int a, int b) {
+class Query {
+    int i, a, b, m;
+    public Query(int i, int a, int b, int m) {
+        this.i = i;
         this.a = a;
         this.b = b;
-    }
-}
-
-class Query {
-    int i, m;
-    public Query(int i, int m) {
-        this.i = i;
         this.m = m;
     }
 }

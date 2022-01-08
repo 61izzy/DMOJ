@@ -74,7 +74,6 @@ public class Main {
     }
     public static int qQuery(int l, int r) {
         int res = gQuery(l, r), cnt = 0;
-
         for (l += n, r += n; l < r; l /= 2, r /= 2) {
             if (l%2 == 1 && res == tree[l++].gcd) cnt += tree[l - 1].cnt;
             if (r%2 == 1 && res == tree[--r].gcd) cnt += tree[r].cnt;

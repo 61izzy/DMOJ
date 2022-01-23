@@ -16,7 +16,7 @@ public class Main {
         for (int i = 0; i < n - 1; i++) {
             edges[i] = new Edge(i, i + 1, scanner.nextInt());
         }
-        Arrays.sort(edges, (Edge a, Edge b) -> a.w - b.w);
+        Arrays.sort(edges, (a, b) -> a.w - b.w);
         
         for (Edge e : edges) {
             if (id[e.u] == -1 || find(e.u) != find(e.v)) {

@@ -3,10 +3,9 @@ using namespace std;
 typedef pair<int, int> pii;
 
 bool comp(pii a, pii b) {return a.first < b.first;}
-
 int main() {
     int n, k;
-    long res = 0;
+    long long res = 0;
     cin >> n >> k;
     int c[k];
     pii arr[n];
@@ -15,7 +14,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         int m, v;
         cin >> m >> v;
-        arr[i] = {m, v};
+        arr[i] = make_pair(m, v);
     }
     sort(arr, arr + n, comp);
     

@@ -39,7 +39,7 @@ class Quadtree {
         if (node == null) node = new Node(s.charAt(n - 1));
         if (s.charAt(n - 1) == 'f') node.c = 'f';
         else if (s.charAt(n - 1) == 'p') {
-            if (node.c != 'f') node.c = 'p';
+            if (node.c == 'e') node.c = 'p';
             for (int i = 0; i < 4; i++) node.child[i] = add(node.child[i]);
         }
         return node;

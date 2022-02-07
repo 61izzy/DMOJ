@@ -2,8 +2,13 @@
 using namespace std;
 typedef pair<int, int> pii;
 
-bool comp(pii a, pii b) {return a.first < b.first;}
+bool comp(pii a, pii b) {
+    return a.first < b.first;
+}
 int main() {
+    cin.sync_with_stdio(0);
+    cin.tie(0);
+    
     int n, k;
     long long res = 0;
     cin >> n >> k;

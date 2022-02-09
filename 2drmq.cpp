@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, sz, st[10][1001][10][1001];
+int st[10][1001][10][1001];
 
 void init(vector<vector<int>> arr) {
-    n = arr.size();
-    sz = (int)log2(n) + 1;
+    int n = arr.size(), sz = (int)log2(n) + 1;
+    
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++)
             st[0][i][0][j] = arr[i][j];

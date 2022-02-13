@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	  static int[][] adj;
-	  static int n;
+    static int[][] adj;
+    static int n;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         

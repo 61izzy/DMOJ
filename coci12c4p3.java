@@ -85,3 +85,4 @@ class Signal {
 }
 
 // this really took 1 hour to debug... -_-
+// could've made it a lot simpler too .-.

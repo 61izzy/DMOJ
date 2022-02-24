@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	  public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         int n = scanner.nextInt(), c = 0, a = n/5, b = 0;
@@ -12,5 +12,5 @@ public class Main {
             a--;
         }
         System.out.println(c);
-	  }
+    }
 }

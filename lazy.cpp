@@ -4,8 +4,6 @@ using namespace std;
 long long tree[400001], lazy[400001], asn[400001];
 
 void build(int* arr, int l, int r, int idx) {
-    lazy[idx] = 0;
-    asn[idx] = 0;
     if (l == r) {
         tree[idx] = arr[l];
         return;

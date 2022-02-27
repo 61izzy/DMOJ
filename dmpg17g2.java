@@ -2,8 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	static Node[] tree;
-	static final long INF = 0x3f3f3f3f3f3f3fL;
+    static Node[] tree;
+    static final long INF = 0x3f3f3f3f3f3f3fL;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
@@ -15,22 +15,22 @@ public class Main {
         tree[0] = new Node(-INF);
         tree[0].l = tree[0].r = tree[0].t = -INF;
         while (q-- > 0) {
-          	char op = scanner.next().charAt(0);
-          	if (op == 'S') {
-            		int i = scanner.nextInt(), x = scanner.nextInt();
-            		update(x, i, 1, n, 1);
-          	}
-          	else {
-            		int l = scanner.nextInt(), r = scanner.nextInt();
-            		System.out.println(query(l, r, 1, n, 1).v);
-          	}
+            char op = scanner.next().charAt(0);
+            if (op == 'S') {
+            	int i = scanner.nextInt(), x = scanner.nextInt();
+            	update(x, i, 1, n, 1);
+            }
+            else {
+            	int l = scanner.nextInt(), r = scanner.nextInt();
+            	System.out.println(query(l, r, 1, n, 1).v);
+            }
         }
     }
     public static void build(int[] arr, int l, int r, int idx) {
       	if (l == r) {
         	tree[idx] = new Node(arr[l]);
             tree[idx].l = tree[idx].r = tree[idx].t = arr[l];
-        	return;
+            return;
       	}
       	tree[idx] = new Node(-1);
       	int m = (l + r)/2;
@@ -44,7 +44,7 @@ public class Main {
     public static void update(int v, int i, int l, int r, int idx) {
       	if (l == r) {
             tree[idx].v = tree[idx].l = tree[idx].r = tree[idx].t = v;
-        	return;
+            return;
       	}
       	int m = (l + r)/2;
       	if (i <= m) update(v, i, l, m, 2 * idx);
@@ -68,8 +68,8 @@ public class Main {
 }
 
 class Node {
-  	long v, l, r, t;
-  	public Node(long v) {
-  		  this.v = v;
-  	}
+    long v, l, r, t;
+    public Node(long v) {
+  	this.v = v;
+    }
 }

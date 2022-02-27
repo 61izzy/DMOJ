@@ -28,7 +28,7 @@ public class Main {
     }
     public static void build(int[] arr, int l, int r, int idx) {
       	if (l == r) {
-        	tree[idx] = new Node(arr[l]);
+            tree[idx] = new Node(arr[l]);
             tree[idx].l = tree[idx].r = tree[idx].t = arr[l];
             return;
       	}

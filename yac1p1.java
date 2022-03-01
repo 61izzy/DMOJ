@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	  public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         int n = scanner.nextInt(), k = scanner.nextInt();
@@ -32,5 +32,5 @@ public class Main {
             sum %= 1000000007;
         }
         System.out.println(sum);
-	  }
+    }
 }

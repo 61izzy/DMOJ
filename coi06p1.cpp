@@ -6,7 +6,7 @@ int main() {
     cin.sync_with_stdio(0);
     int n;
     cin >> n;
-    long c = 0;
+    long long c = 0;
     stack<pair<int, int>> s;
     for (int i = 0; i < n; i++) {
         int h, temp = 1;
